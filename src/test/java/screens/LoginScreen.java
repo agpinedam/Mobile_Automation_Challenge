@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class LoginScreen extends BaseScreen{
-    //private final By notNow = By.id("com.imdb.mobile:id/splash_not_now");
     private final By signInWithGoogle = By.id("com.imdb.mobile:id/google_oauth");
     private final Logger log = LoggerFactory.getLogger(LoginScreen.class);
 
