@@ -11,6 +11,7 @@ import java.io.FileReader;
 public class ConfigCapabilities {
     private static final String DEVICE_NAME = "deviceName";
     private static final String PLATFORM_NAME = "platformName";
+    private static final String PLATFORM_VERSION = "platformVersion";
     private static final String APP_PACKAGE = "appPackage";
     private static final String APP_ACTIVITY = "appActivity";
     private static final String JSON_FILE_PATH = "src/test/resources/Capabilities.json";
@@ -19,8 +20,10 @@ public class ConfigCapabilities {
 
     private static void ApplicationSetUp(){
         ConfigCapabilities.capabilities.setCapability("appPackage", getJsonDataProperty(APP_PACKAGE));
+        capabilities.setCapability("platformVersion", getJsonDataProperty(PLATFORM_VERSION));
         ConfigCapabilities.capabilities.setCapability("appActivity", getJsonDataProperty(APP_ACTIVITY));
         ConfigCapabilities.capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, getJsonDataProperty(DEVICE_NAME));
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, getJsonDataProperty(PLATFORM_VERSION));
         ConfigCapabilities.capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, getJsonDataProperty(PLATFORM_NAME));
         ConfigCapabilities.capabilities.setCapability("automationName", "UiAutomator2");
     }
