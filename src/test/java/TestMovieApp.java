@@ -18,7 +18,7 @@ public class TestMovieApp extends Hooks {
                         "form an underground fight club that evolves into much more.");
     }
     @Test
-    public void addMovieWatchList() throws InterruptedException {
+    public void addMovieWatchList() {
         searchScreen.selectTopRatedCategory();
         searchScreen.addRandomMovie();
         randomMovieName = searchScreen.getRandomMovieName();
@@ -26,6 +26,14 @@ public class TestMovieApp extends Hooks {
         tip.exitTip();
         assertThat(randomMovieName,containsString(userScreen.getMovieWatchList()));
     }
-
+    @Test
+    public void rateAMovie(){
+        browserBar.clickOnSearchButton();
+        searchScreen.typingOnSearchBar("Black Widow");
+        searchScreen.clickOnFirstSearchResult();
+        movieScreen.searchForUserReviews();
+        movieScreen.clickAddReview();
+        ratingScreen.clickOnAnyStartRate();
+    }
 
 }

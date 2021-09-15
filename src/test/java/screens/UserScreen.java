@@ -14,9 +14,9 @@ public class UserScreen extends BaseScreen{
     }
 
     public String getMovieWatchList() {
-        implicitWait();
+        implicitWait(5);
         log.debug("Wait for User page");
-        scroll();
+        scrollNumber(1);
         String movieName =getTexFromElement(movieOnWatchList);
         log.debug("Te first movie in the list is " + movieName);
         return movieName;

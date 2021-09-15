@@ -23,9 +23,10 @@ public class Hooks {
     protected MovieScreen movieScreen;
     protected UserScreen userScreen;
     protected String randomMovieName;
+    protected RatingScreen ratingScreen;
 
     @BeforeSuite
-    public void setDriver(){
+    public void setup (){
         driver = mobileAppDriver.GetMoviesAppDriver(configCapabilities.GetCapabilities());
         location = new Location(driver);
         stayInformed = new StayInformed(driver);
@@ -35,6 +36,7 @@ public class Hooks {
         searchScreen = new SearchScreen(driver);
         movieScreen = new MovieScreen(driver);
         userScreen = new UserScreen(driver);
+        ratingScreen = new RatingScreen(driver);
         randomMovieName = "";
     }
     @BeforeTest

@@ -20,12 +20,11 @@ import java.util.concurrent.TimeUnit;
 public class BaseScreen {
     protected AndroidDriver driver;
     protected WebDriverWait wait;
-    protected WebDriver.Timeouts timeouts;
     private final Logger log = LoggerFactory.getLogger(BaseScreen.class);
 
     protected BaseScreen(AndroidDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver,60);
+        wait = new WebDriverWait(driver,120);
     }
 
     protected void clickOnElement(By element){
@@ -42,20 +41,27 @@ public class BaseScreen {
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
         return driver.findElement(element).getText();
     }
+    protected void scrollNumber(int numberOfScrolling){
+        for (int i = 0; i < numberOfScrolling; i++){
+            scroll();
+            log.debug("Scrolling");
+        }
+    }
     protected void scroll(){
         Dimension dimension = driver.manage().window().getSize();
         int start_x = (int) (dimension.width * 0.5);
         int start_y = (int) (dimension.height * 0.8);
 
         int end_x = (int) (dimension.width * 0.5);
-        int end_y = (int) (dimension.height * 0.5);
+        int end_y = (int) (dimension.height * 0.1);
 
         TouchAction touchAction = new TouchAction(driver);
         touchAction.press(PointOption.point(start_x,start_y))
                 .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
                 .moveTo(PointOption.point(end_x,end_y)).release().perform();
+
     }
-    public void implicitWait(){
-        timeouts = driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    public void implicitWait(int time){
+        driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
     }
 }
