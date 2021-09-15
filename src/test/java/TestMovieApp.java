@@ -15,9 +15,10 @@ public class TestMovieApp extends Hooks {
                         "form an underground fight club that evolves into much more.");
     }
     @Test
-    public void addMovieWatchList() throws InterruptedException {
+    public void addMovieWatchList() {
         searchScreen.selectRandomCategory();
-        searchScreen.selectRandomMovie();
+        //searchScreen.selectRandomMovie();
+        searchScreen.addRandomMovie();
     }
 
 
