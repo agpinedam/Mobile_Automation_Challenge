@@ -38,5 +38,7 @@ public class Hooks {
         location.denyAccessLocation();
         stayInformed.acceptNotifications();
         loginScreen.loginWithGoogle();
+        browserBar.clickOnSearchButton();
+        searchTip.exitTip();
     }
 }
