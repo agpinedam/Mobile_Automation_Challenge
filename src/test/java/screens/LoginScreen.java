@@ -16,6 +16,7 @@ public class LoginScreen extends BaseScreen{
     public void loginWithGoogle(){
         clickOnElement(signInWithGoogle);
         log.debug("Click on Sing in with Google account");
+        implicitWait();
     }
 
 }

@@ -2,6 +2,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import screens.Hooks;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+
 
 public class TestMovieApp extends Hooks {
 
@@ -15,10 +18,13 @@ public class TestMovieApp extends Hooks {
                         "form an underground fight club that evolves into much more.");
     }
     @Test
-    public void addMovieWatchList() {
-        searchScreen.selectRandomCategory();
-        //searchScreen.selectRandomMovie();
+    public void addMovieWatchList() throws InterruptedException {
+        searchScreen.selectTopRatedCategory();
         searchScreen.addRandomMovie();
+        randomMovieName = searchScreen.getRandomMovieName();
+        browserBar.clickOnYouButton();
+        tip.exitTip();
+        assertThat(randomMovieName,containsString(userScreen.getMovieWatchList()));
     }
 
 

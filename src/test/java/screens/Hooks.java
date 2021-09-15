@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import screens.componets.BrowserBar;
 import screens.popup.Location;
-import screens.popup.SearchTip;
+import screens.popup.Tip;
 import screens.popup.StayInformed;
 
 public class Hooks {
@@ -18,9 +18,11 @@ public class Hooks {
     protected StayInformed stayInformed;
     protected LoginScreen loginScreen;
     protected BrowserBar browserBar;
-    protected SearchTip searchTip;
+    protected Tip tip;
     protected SearchScreen searchScreen;
     protected MovieScreen movieScreen;
+    protected UserScreen userScreen;
+    protected String randomMovieName;
 
     @BeforeSuite
     public void setDriver(){
@@ -29,16 +31,18 @@ public class Hooks {
         stayInformed = new StayInformed(driver);
         loginScreen = new LoginScreen(driver);
         browserBar = new BrowserBar(driver);
-        searchTip = new SearchTip(driver);
+        tip = new Tip(driver);
         searchScreen = new SearchScreen(driver);
         movieScreen = new MovieScreen(driver);
+        userScreen = new UserScreen(driver);
+        randomMovieName = "";
     }
     @BeforeTest
-    public void skipAndLogin(){
+    public void skipAndLogin() {
         location.denyAccessLocation();
         stayInformed.acceptNotifications();
         loginScreen.loginWithGoogle();
         browserBar.clickOnSearchButton();
-        searchTip.exitTip();
+        tip.exitTip();
     }
 }
