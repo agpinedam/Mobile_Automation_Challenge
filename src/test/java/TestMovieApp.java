@@ -34,6 +34,8 @@ public class TestMovieApp extends Hooks {
         movieScreen.searchForUserReviews();
         movieScreen.clickAddReview();
         ratingScreen.clickOnAnyStartRate();
+        ratingScreen.clickOnRate();
+        System.out.println(ratedSaved.message());
     }
 
 }

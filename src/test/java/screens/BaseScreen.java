@@ -6,7 +6,6 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
@@ -24,7 +23,7 @@ public class BaseScreen {
 
     protected BaseScreen(AndroidDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver,120);
+        wait = new WebDriverWait(driver,60);
     }
 
     protected void clickOnElement(By element){

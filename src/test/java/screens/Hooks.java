@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import screens.componets.BrowserBar;
 import screens.popup.Location;
+import screens.popup.RatedSaved;
 import screens.popup.Tip;
 import screens.popup.StayInformed;
 
@@ -24,6 +25,7 @@ public class Hooks {
     protected UserScreen userScreen;
     protected String randomMovieName;
     protected RatingScreen ratingScreen;
+    protected RatedSaved ratedSaved;
 
     @BeforeSuite
     public void setup (){
@@ -37,6 +39,7 @@ public class Hooks {
         movieScreen = new MovieScreen(driver);
         userScreen = new UserScreen(driver);
         ratingScreen = new RatingScreen(driver);
+        ratedSaved = new RatedSaved(driver);
         randomMovieName = "";
     }
     @BeforeTest
