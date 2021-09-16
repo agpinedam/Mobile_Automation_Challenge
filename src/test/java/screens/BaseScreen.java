@@ -11,10 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import io.appium.java_client.TouchAction;
-
-
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class BaseScreen {
     protected AndroidDriver driver;
@@ -37,7 +34,7 @@ public class BaseScreen {
         driver.findElement(element).sendKeys(typeElement);
     }
     protected String getTexFromElement(By element){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+        waitUntilVisibilityOfElement(element);
         return driver.findElement(element).getText();
     }
     protected void scrollNumber(int numberOfScrolling){
@@ -46,21 +43,20 @@ public class BaseScreen {
             log.debug("Scrolling");
         }
     }
-    protected void scroll(){
+    private void scroll(){
         Dimension dimension = driver.manage().window().getSize();
         int start_x = (int) (dimension.width * 0.5);
-        int start_y = (int) (dimension.height * 0.8);
+        int start_y = (int) (dimension.height * 0.85);
 
         int end_x = (int) (dimension.width * 0.5);
-        int end_y = (int) (dimension.height * 0.1);
+        int end_y = (int) (dimension.height * 0.2);
 
         TouchAction touchAction = new TouchAction(driver);
         touchAction.press(PointOption.point(start_x,start_y))
                 .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
                 .moveTo(PointOption.point(end_x,end_y)).release().perform();
-
     }
-    public void implicitWait(int time){
-        driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
+    protected void waitUntilVisibilityOfElement(By element){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 }

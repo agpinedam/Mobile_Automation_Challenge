@@ -18,6 +18,7 @@ public class Hooks {
     protected Location location;
     protected StayInformed stayInformed;
     protected LoginScreen loginScreen;
+    protected HomeScreen homeScreen;
     protected BrowserBar browserBar;
     protected Tip tip;
     protected SearchScreen searchScreen;
@@ -33,6 +34,7 @@ public class Hooks {
         location = new Location(driver);
         stayInformed = new StayInformed(driver);
         loginScreen = new LoginScreen(driver);
+        homeScreen =new HomeScreen(driver);
         browserBar = new BrowserBar(driver);
         tip = new Tip(driver);
         searchScreen = new SearchScreen(driver);
@@ -47,6 +49,7 @@ public class Hooks {
         location.denyAccessLocation();
         stayInformed.acceptNotifications();
         loginScreen.loginWithGoogle();
+        homeScreen.waitForFeatureToday();
         browserBar.clickOnSearchButton();
         tip.exitTip();
     }

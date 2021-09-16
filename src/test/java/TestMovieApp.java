@@ -24,18 +24,20 @@ public class TestMovieApp extends Hooks {
         randomMovieName = searchScreen.getRandomMovieName();
         browserBar.clickOnYouButton();
         tip.exitTip();
+        userScreen.waitForWatchList();
         assertThat(randomMovieName,containsString(userScreen.getMovieWatchList()));
     }
     @Test
     public void rateAMovie(){
         browserBar.clickOnSearchButton();
-        searchScreen.typingOnSearchBar("Black Widow");
+        searchScreen.typingOnSearchBar("Citizen Kane");
         searchScreen.clickOnFirstSearchResult();
+        movieScreen.waitForVisibilityOfPoster();
         movieScreen.searchForUserReviews();
         movieScreen.clickAddReview();
         ratingScreen.clickOnAnyStartRate();
         ratingScreen.clickOnRate();
-        System.out.println(ratedSaved.message());
+        assertThat(ratedSaved.getMessageText(),containsString("Rating saved"));
     }
 
 }

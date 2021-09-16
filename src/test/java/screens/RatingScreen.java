@@ -18,9 +18,10 @@ public class RatingScreen extends BaseScreen{
         log.debug("Click on any start rated");
     }
     private By randomRated(){
-        String xpath = "com.imdb.mobile:id/star_6";
-        log.debug("Random rated");
-        return By.id(xpath);
+        int randomNumber = (int) (Math.random() * 5 + 6);
+        String id = "com.imdb.mobile:id/star_" + randomNumber;
+        log.debug("Random rated "+randomNumber + " starts");
+        return By.id(id);
     }
     public void clickOnRate(){
         clickOnElement(rateButton);

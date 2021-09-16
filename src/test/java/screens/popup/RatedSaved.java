@@ -7,14 +7,15 @@ import org.slf4j.LoggerFactory;
 import screens.BaseScreen;
 
 public class RatedSaved extends BaseScreen {
-    private final By message = By.id("com.imdb.mobile:id/title");
+    private final By messageText = By.id("com.imdb.mobile:id/title");
     private final Logger log = LoggerFactory.getLogger(RatedSaved.class);
 
     public RatedSaved(AndroidDriver driver) {
         super(driver);
     }
-    public String message(){
-        log.debug("Get the rated saved message");
-        return getTexFromElement(message);
+    public String getMessageText(){
+        String message = getTexFromElement(messageText);
+        log.debug("Get the rated saved message " + message);
+        return message;
     }
 }

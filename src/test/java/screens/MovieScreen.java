@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 public class MovieScreen extends BaseScreen{
     private final By overview = By.id("com.imdb.mobile:id/plot_overview");
     private final By yourRate = By.id("com.imdb.mobile:id/empty_user_rating");
+    private final By poster = By.id("com.imdb.mobile:id/title_poster");
     private final Logger log = LoggerFactory.getLogger(MovieScreen.class);
 
     public MovieScreen(AndroidDriver driver) {
@@ -17,17 +18,15 @@ public class MovieScreen extends BaseScreen{
         log.info("Get movie overview");
         return getTexFromElement(overview);
     }
+    public void waitForVisibilityOfPoster(){
+        waitUntilVisibilityOfElement(poster);
+    }
     public void searchForUserReviews(){
-        try {
-            Thread.sleep(30000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         log.debug("Wait for Movie page");
         scrollNumber(5);
     }
     public void clickAddReview(){
         clickOnElement(yourRate);
-        log.debug("Click on add review");
+        log.info("Click on add review");
     }
 }
