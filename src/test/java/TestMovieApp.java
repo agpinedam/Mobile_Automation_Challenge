@@ -39,5 +39,4 @@ public class TestMovieApp extends Hooks {
         ratingScreen.clickOnRate();
         assertThat(ratedSaved.getMessageText(),containsString("Rating saved"));
     }
-
 }

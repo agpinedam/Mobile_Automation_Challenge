@@ -19,7 +19,7 @@ public class UserScreen extends BaseScreen{
     }
 
     public String getMovieWatchList() {
-        scrollNumber(1);
+        scrollToFindElement(movieOnWatchList);
         String movieName =getTexFromElement(movieOnWatchList);
         log.debug("The first movie in the list is " + movieName);
         return movieName;

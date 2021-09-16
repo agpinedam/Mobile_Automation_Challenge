@@ -23,7 +23,7 @@ public class MovieScreen extends BaseScreen{
     }
     public void searchForUserReviews(){
         log.debug("Wait for Movie page");
-        scrollNumber(5);
+        scrollToFindElement(yourRate);
     }
     public void clickAddReview(){
         clickOnElement(yourRate);

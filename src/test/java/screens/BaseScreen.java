@@ -2,10 +2,13 @@ package screens;
 
 
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
@@ -37,11 +40,19 @@ public class BaseScreen {
         waitUntilVisibilityOfElement(element);
         return driver.findElement(element).getText();
     }
-    protected void scrollNumber(int numberOfScrolling){
-        for (int i = 0; i < numberOfScrolling; i++){
+    protected void scrollToFindElement(By element){
+        boolean foundElement = false;
+        do {
             scroll();
             log.debug("Scrolling");
-        }
+            try {
+                foundElement = driver.findElement(element).isEnabled();
+                log.debug("Element found");
+            }catch (NoSuchElementException ex){
+                foundElement = false;
+                log.debug("Element was not found yet");
+            }
+        }while (!foundElement);
     }
     private void scroll(){
         Dimension dimension = driver.manage().window().getSize();
