@@ -18,7 +18,7 @@ public class SearchScreen extends BaseScreen{
     }
     public void typingOnSearchBar(String movieName){
         typingOnElement(searchBar,movieName);
-        log.debug("Typing"+movieName+"on the Search Bar");
+        log.debug("Typing "+movieName+" on the Search Bar");
     }
     public void clickOnFirstSearchResult(){
      clickOnElement(firstSearchMovie);

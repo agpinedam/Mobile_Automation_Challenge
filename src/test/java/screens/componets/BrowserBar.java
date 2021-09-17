@@ -9,6 +9,7 @@ import screens.BaseScreen;
 public class BrowserBar extends BaseScreen {
     private final By searchButton = By.id("com.imdb.mobile:id/navigation_search_browse");
     private final By youButton = By.id("com.imdb.mobile:id/navigation_you");
+    private final By home = By.id("com.imdb.mobile:id/navigation_home");
     private final Logger log = LoggerFactory.getLogger(BrowserBar.class);
 
     public BrowserBar(AndroidDriver driver) {
@@ -21,5 +22,9 @@ public class BrowserBar extends BaseScreen {
     public void clickOnYouButton(){
         clickOnElement(youButton);
         log.debug("Click on You button");
+    }
+    public void goHome(){
+        clickOnElement(home);
+        log.debug("Click on home button");
     }
 }

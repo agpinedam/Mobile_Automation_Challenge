@@ -6,7 +6,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
 
-public class TestMovieApp extends Hooks {
+public class TestIMDbApp extends Hooks {
 
     @Test
     public void verifyOverview() {
@@ -38,5 +38,6 @@ public class TestMovieApp extends Hooks {
         ratingScreen.clickOnAnyStartRate();
         ratingScreen.clickOnRate();
         assertThat(ratedSaved.getMessageText(),containsString("Rating saved"));
+        ratedSaved.closeMessage();
     }
 }

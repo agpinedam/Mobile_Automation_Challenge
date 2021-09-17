@@ -3,8 +3,7 @@ package screens;
 import core.ConfigCapabilities;
 import core.MobileAppDriver;
 import io.appium.java_client.android.AndroidDriver;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 import screens.componets.BrowserBar;
 import screens.popup.Location;
 import screens.popup.RatedSaved;
@@ -52,5 +51,16 @@ public class Hooks {
         homeScreen.waitForFeatureToday();
         browserBar.clickOnSearchButton();
         tip.exitTip();
+    }
+    @AfterMethod
+    public void goHomeScreen(){
+        browserBar.goHome();
+        homeScreen.waitForFeatureToday();
+        browserBar.clickOnSearchButton();
+        browserBar.clickOnSearchButton();
+    }
+    @AfterTest
+    public void closeApp(){
+        driver.closeApp();
     }
 }
