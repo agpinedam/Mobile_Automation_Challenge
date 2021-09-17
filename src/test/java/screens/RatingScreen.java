@@ -18,7 +18,7 @@ public class RatingScreen extends BaseScreen{
         log.debug("Click on any start rated");
     }
     private By randomRated(){
-        int randomNumber = (int) (Math.random() * 4 + 7);
+        int randomNumber = generateRandomData.randomInteger(7,10);
         String id = "com.imdb.mobile:id/star_" + randomNumber;
         log.debug("Random rated "+randomNumber + " starts");
         return By.id(id);

@@ -11,17 +11,16 @@ public class TestIMDbApp extends Hooks {
     @Test
     public void verifyOverview() {
         browserBar.clickOnSearchButton();
-        searchScreen.typingOnSearchBar("Fight Club");
+        searchScreen.typingOnSearchBar(movieName);
         searchScreen.clickOnFirstSearchResult();
-        Assert.assertEquals(movieScreen.getOverview(),
-                "An insomniac office worker and a devil-may-care soap maker " +
-                        "form an underground fight club that evolves into much more.");
+        assertThat(movieScreen.getOverview(),containsString(movieOverview));
     }
     @Test
     public void addMovieWatchList() {
-        searchScreen.selectTopRatedCategory();
+        searchScreen.typingOnSearchBar(movieName);
         searchScreen.addRandomMovie();
-        randomMovieName = searchScreen.getRandomMovieName();
+        randomMovieName = movieScreen.getMovieName();
+        movieScreen.addWatchList();
         browserBar.clickOnYouButton();
         tip.exitTip();
         userScreen.waitForWatchList();
@@ -30,7 +29,7 @@ public class TestIMDbApp extends Hooks {
     @Test
     public void rateAMovie(){
         browserBar.clickOnSearchButton();
-        searchScreen.typingOnSearchBar("Citizen Kane");
+        searchScreen.typingOnSearchBar(movieName);
         searchScreen.clickOnFirstSearchResult();
         movieScreen.waitForVisibilityOfPoster();
         movieScreen.searchForUserReviews();

@@ -9,6 +9,8 @@ public class MovieScreen extends BaseScreen{
     private final By overview = By.id("com.imdb.mobile:id/plot_overview");
     private final By yourRate = By.id("com.imdb.mobile:id/empty_user_rating");
     private final By poster = By.id("com.imdb.mobile:id/title_poster");
+    private final By movieName = By.id("com.imdb.mobile:id/title");
+    private final By addWatchList =  By.id("com.imdb.mobile:id/watchlist_button_view");
     private final Logger log = LoggerFactory.getLogger(MovieScreen.class);
 
     public MovieScreen(AndroidDriver driver) {
@@ -28,5 +30,13 @@ public class MovieScreen extends BaseScreen{
     public void clickAddReview(){
         clickOnElement(yourRate);
         log.info("Click on add review");
+    }
+    public String getMovieName(){
+        log.debug("Get movie name");
+        return getTexFromElement(movieName);
+    }
+    public void addWatchList(){
+        scrollToFindElement(addWatchList);
+        clickOnElement(addWatchList);
     }
 }

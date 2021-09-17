@@ -12,16 +12,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import io.appium.java_client.TouchAction;
+import utils.GenerateRandomData;
+
 import java.time.Duration;
 
 public class BaseScreen {
     protected AndroidDriver driver;
     protected WebDriverWait wait;
+    protected GenerateRandomData generateRandomData;
     private final Logger log = LoggerFactory.getLogger(BaseScreen.class);
 
     protected BaseScreen(AndroidDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver,60);
+        generateRandomData = new GenerateRandomData();
     }
 
     protected void clickOnElement(By element){
