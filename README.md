@@ -27,4 +27,4 @@
 - And select a rate
 - Then a saved message must be displayed
 
-You want to test the imdb app on android, for that appium and Android studio were used, in addition selenium and test ng were used. The project is built with page object model where each screen and pop app used are in the screens folder, in addition the data of the movies are in the movies.properties file.
+We want to test the imdb app on android, for that appium and Android studio were used, in addition selenium and testng were used. The project is built with page object model where each screen and popup used are in the screens folder, in addition the data of the movies are in the movies.properties file.
